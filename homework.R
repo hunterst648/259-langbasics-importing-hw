@@ -18,7 +18,7 @@
 # Load the readr package
 
 # ANSWER
-
+library(readr)
 
 ### QUESTION 2 ----- 
 
@@ -46,6 +46,7 @@ col_names  <-  c("trial_num","speed_actual","speed_response","correct")
 
 # ANSWER
 
+ds1 <- read_csv('6191_1.txt')
 
 
 ### QUESTION 3 ----- 
