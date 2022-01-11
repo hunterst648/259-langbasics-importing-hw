@@ -41,14 +41,19 @@ library(readr)
 # etc..
 
 # A list of column names are provided to use:
+#  I changed the provided name col_names because the variable is also an argument
+# for the  read_* function. 
 
-col_names  <-  c("trial_num","speed_actual","speed_response","correct")
+colnames  <-  c("trial_num","speed_actual","speed_response","correct")
 coltypes <- "dccl"
 
 # ANSWER
-full_file_names <- dir('data_raw', full.names = TRUE)
 
-ds1 <- read_delim('6191_1.txt')
+colnames  <-  c("trial_num","speed_actual","speed_response","correct")
+coltypes <- "dccl"
+
+ds1 <- read_tsv('data_A/6191_1.txt',col_names = colnames ,
+            col_types = coltypes ,skip = 7)
 
 
 ### QUESTION 3 ----- 
@@ -58,7 +63,11 @@ ds1 <- read_delim('6191_1.txt')
 # Then write the new data to a CSV file in the "data_cleaned" folder
 
 # ANSWER
+ds1$trial_num <- ds1$trial_num + 100
+write_csv(ds1, file = 'data_cleaned/data_set_1.csv')
 
+# I created the folder data_cleaned not using r code. Surely there is an easy
+# way to do this in r. 
 
 ### QUESTION 4 ----- 
 
@@ -67,13 +76,17 @@ ds1 <- read_delim('6191_1.txt')
 
 # ANSWER
 
-
+full_file_names <- list.files('data_A', full.names = TRUE)
+da_files <- full_file_names
+da_files
 ### QUESTION 5 ----- 
 
 # Read all of the files in data_A into a single tibble called ds
 
 # ANSWER
-
+coltypes <- 'iccl'
+ds <- read_tsv( file = da_files,col_names = colnames ,
+                col_types = coltypes ,skip = 7, show_col_types = TRUE)
 
 ### QUESTION 6 -----
 
