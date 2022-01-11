@@ -43,10 +43,12 @@ library(readr)
 # A list of column names are provided to use:
 
 col_names  <-  c("trial_num","speed_actual","speed_response","correct")
+coltypes <- "dccl"
 
 # ANSWER
+full_file_names <- dir('data_raw', full.names = TRUE)
 
-ds1 <- read_csv('6191_1.txt')
+ds1 <- read_delim('6191_1.txt')
 
 
 ### QUESTION 3 ----- 
