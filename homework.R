@@ -131,10 +131,10 @@ ds
 # ANSWER
 install.packages("readxl")
 library(readxl)
-?readxl
-
-ds_B <- readxl
-
-# I can't seem to use readxl because of an issue of some sort. Everytime I type
-# readxl an error window appears. R code execution error!!
+?readxl  # this doesn't work for some reason. 
+#col_b_types <- 'iD'
+colnames_B  <-  c("Participant Number","Date Tested")
+ds_B <- read_excel('data_b/participant_info.xlsx', sheet = 'participant')
+ds_b_test <-  read_excel('data_b/participant_info.xlsx',
+                         col_names = colnames_B, sheet = 'testdate')
 
