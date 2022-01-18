@@ -67,7 +67,7 @@ ds1$trial_num <- ds1$trial_num + 100
 write_csv(ds1, file = 'data_cleaned/data_set_1.csv')
 
 # I created the folder data_cleaned not using r code. Surely there is an easy
-# way to do this in r. 
+# way to do this in r?? 
 
 ### QUESTION 4 ----- 
 
@@ -84,9 +84,10 @@ da_files
 # Read all of the files in data_A into a single tibble called ds
 
 # ANSWER
-coltypes <- 'iccl'
+
 ds <- read_tsv( file = da_files,col_names = colnames ,
                 col_types = coltypes ,skip = 7, show_col_types = TRUE)
+ds
 
 ### QUESTION 6 -----
 
@@ -100,7 +101,11 @@ ds <- read_tsv( file = da_files,col_names = colnames ,
 
 # ANSWER
 
-
+coltypes <- 'iccl'
+ds <- read_tsv( file = da_files,col_names = colnames ,
+                col_types = coltypes ,skip = 7, show_col_types = TRUE)
+ds$trial_num <- ds$trial_num + 100
+ds
 ### QUESTION 7 -----
 
 # Now that the column type problem is fixed, take a look at ds
@@ -109,6 +114,12 @@ ds <- read_tsv( file = da_files,col_names = colnames ,
 # Re-import the data so that filename becomes a column
 
 # ANSWER
+ds
+coltypes <- 'iccl'
+ds <- read_tsv( file = da_files,col_names = colnames ,
+                col_types = coltypes ,skip = 7, show_col_types = TRUE, id = 'filename')
+ds$trial_num <- ds$trial_num + 100
+ds
 
 
 ### QUESTION 8 -----
@@ -118,4 +129,12 @@ ds <- read_tsv( file = da_files,col_names = colnames ,
 # There are two sheets of data -- import each one into a new tibble
 
 # ANSWER
+install.packages("readxl")
+library(readxl)
+?readxl
+
+ds_B <- readxl
+
+# I can't seem to use readxl because of an issue of some sort. Everytime I type
+# readxl an error window appears. R code execution error!!
 
